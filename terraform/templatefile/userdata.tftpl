@@ -1,0 +1,4 @@
+# common to all instance roles
+%{ for enabled, port in is_k8s ~}
+# this is only for k8s
+%{ endfor ~}
