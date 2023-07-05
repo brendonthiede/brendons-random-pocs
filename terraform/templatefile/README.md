@@ -1,6 +1,6 @@
 # templatefile Function Example
 
-This is a simple example of using the [templatefile](https://www.terraform.io/docs/configuration/functions/templatefile.html) function in Terraform with the specific purpose if dynamically including a section of content based on a variable. The variable to control the dynamic content is `is_k8s`. The variable is a list, and if it has an entry, then the dynamic content is included. If the variable is empty, then the dynamic content is not included.
+This is a simple example of using the [templatefile](https://www.terraform.io/docs/configuration/functions/templatefile.html) function in Terraform with the specific purpose if dynamically including a section of content based on a variable. The variable to control the dynamic content is `is_k8s`. The variable is a list, and if it has an entry, then the dynamic content is included. If the variable is empty, then the dynamic content is not included. This is an likely overly complex and should rely on the `if` directive instead, which is shown with the `instance_role` variable, which when set to `special` include another dynamic section.
 
 ## How to run the example
 
@@ -23,13 +23,22 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
 Outputs:
 
+generic_userdata = <<EOT
+# common to all instance roles
+
+
+EOT
 k8s_userdata = <<EOT
 # common to all instance roles
 # this is only for k8s
 
+
 EOT
-non_k8s_userdata = <<EOT
+special_userdata = <<EOT
 # common to all instance roles
+
+# this is only for other special roles
+
 
 EOT
 ```
