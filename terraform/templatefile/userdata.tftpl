@@ -2,6 +2,7 @@
 %{ for enabled in is_k8s ~}
 # this is only for k8s
 %{ endfor ~}
-%{ if instance_role == "special" }
+${ instance_role != null ? "special" : "not special" }
+%{ if instance_role == "special" ~}
 # this is only for other special roles
-%{ endif }
+%{ endif ~}

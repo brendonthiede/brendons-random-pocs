@@ -30,3 +30,7 @@ output "k8s_userdata" {
 output "special_userdata" {
   value = local.special_userdata
 }
+
+output "token" {
+  value = "asdfasdf"
+}
