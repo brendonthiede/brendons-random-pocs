@@ -1,0 +1,4 @@
+{{- if .Values.frontend.ingress.enabled }}
+Application URL:
+  https://{{ .Values.frontend.ingress.host }}/
+{{- end }}
